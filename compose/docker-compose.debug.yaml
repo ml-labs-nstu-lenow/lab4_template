@@ -1,18 +1,19 @@
 services:
   app:
     build:
-      context: services/backend-fastapi
+      context: .
       dockerfile: dockerfile/Dev.Dockerfile
     ports:
       - 8000:5000
-    entrypoint:
+    command:
       - uvicorn
-      - src.main:app
+      - src.app:app
       - --reload
       - --host
       - 0.0.0.0
       - --port
       - "5000"
     volumes:
-      - ./services/backend-fastapi/src/:/app/src/
-      - ./services/backend-fastapi/config.json:/app/config.json
+      - ./src/:/app/src/
+      - ./models/:/app/models/
+      - ./config_debug.json:/app/config.json

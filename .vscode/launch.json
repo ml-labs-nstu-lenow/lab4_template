@@ -1,0 +1,40 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "debug fastapi",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": ["src.app:app", "--host", "localhost", "--port", "5002"],
+      "justMyCode": false
+    },
+    {
+      "name": "debug gradio",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "src/gradio_app.py",
+      "cwd": "${workspaceFolder}",
+      "justMyCode": false
+    },
+    {
+      "name": "Attach (remote debug)",
+      "type": "python",
+      "request": "attach",
+      "port": 5678,
+      "host": "127.0.0.1",
+      "justMyCode": false,
+      "cwd": "${workspaceFolder}",
+      "pathMappings": [
+        {
+          "localRoot": "${workspaceFolder}",
+          "remoteRoot": "/app/"
+        },
+        {
+          "localRoot": "/home/lenow/.cache/pypoetry/virtualenvs/lab4-ZVzqs4c3-py3.12/lib/",
+          "remoteRoot": "/app/.venv/lib/"
+        }
+      ]
+    }
+  ]
+}

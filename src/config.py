@@ -27,12 +27,12 @@ IntMapStr = Annotated[int, BeforeValidator(convert_str2int)]
 
 
 class AppSettings(BaseSettings):
-    model_path: str
+    path_to_modelfile: str
 
     model_config: ClassVar[SettingsConfigDict] = SettingsConfigDict(
         json_file=(
             "config.json",
-            "debug_config.json",
+            "config_debug.json",
         ),
     )
 
@@ -49,7 +49,6 @@ class AppSettings(BaseSettings):
             init_settings,
             env_settings,
             JsonConfigSettingsSource(settings_cls),
-            dotenv_settings,
             file_secret_settings,
         )
 

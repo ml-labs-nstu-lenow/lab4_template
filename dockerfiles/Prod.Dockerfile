@@ -21,6 +21,10 @@ COPY src/ ./src/
 
 CMD ["python", "-m",\
   "uvicorn",\
-  "src.main:app",\
+  "src.app:app",\
   "--host", "0.0.0.0",\
   "--port", "5000" ]
+
+# или для gradio
+# CMD ["python", "src/gradio_app.py" ]
+

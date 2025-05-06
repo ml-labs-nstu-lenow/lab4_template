@@ -1,9 +1,10 @@
 services:
   app:
     build:
-      context: services/backend-fastapi
+      context: .
       dockerfile: dockerfile/Prod.Dockerfile
     volumes:
-      - ./services/backend-fastapi/config.json:/app/config.json
-    depends_on:
-      - db
+      - ./config.json:/app/config.json
+      - ./models/:/app/models/
+    ports:
+      - 8000:5000
