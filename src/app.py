@@ -23,8 +23,12 @@ class OutputData(BaseModel):
 @asynccontextmanager
 async def lifespan(_: FastAPI):
     global model
-    model = joblib.load(app_config.path_to_modelfile)
-    print("Модель загружена")
+    try:
+        model = joblib.load(app_config.path_to_modelfile)
+        print("Модель загружена")
+    except Exception as e:
+        print(f"Ошибка загрузки модели: {e}")
+        raise SystemExit(1)
     yield
     print("Модель очищена")
 
