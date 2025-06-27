@@ -1,0 +1,80 @@
+{
+  "name": "ML Model Server Workspace",
+  "version": "1.0.0",
+  "system_prompt": "You are an AI assistant helping develop a machine learning model server with FastAPI and Docker.",
+  "vars": {
+    "model_path": "${config.path_to_modelfile}"
+  },
+  "groups": [
+    {
+      "name": "FastAPI Server",
+      "system_prompt": "You are analyzing the FastAPI server implementation for the ML model.",
+      "opts": {
+        "remove_config_system_prompt": true
+      },
+      "data": ["src/app.py", "src/config.py"]
+    },
+    {
+      "name": "Gradio Interface",
+      "system_prompt": "You are examining the Gradio interface for model interaction.",
+      "data": ["src/gradio_app.py", "src/config.py"]
+    },
+    {
+      "name": "Deployment Configs",
+      "system_prompt": "You are reviewing Docker configurations for model deployment.",
+      "data": [
+        "compose/docker-compose.yaml",
+        "compose/docker-compose.debug.yaml",
+        "dockerfiles/Prod.Dockerfile",
+        "dockerfiles/Dev.Dockerfile"
+      ]
+    },
+    {
+      "name": "Configuration Management",
+      "system_prompt": "You are analyzing the configuration system for model parameters.",
+      "data": ["src/config.py", "config_debug.json"]
+    }
+  ],
+  "data": {
+    "src/app.py": {
+      "type": "file",
+      "path": "src/app.py",
+      "description": "FastAPI application with model prediction endpoint"
+    },
+    "src/gradio_app.py": {
+      "type": "file",
+      "path": "src/gradio_app.py",
+      "description": "Gradio interface for model inference"
+    },
+    "src/config.py": {
+      "type": "file",
+      "path": "src/config.py",
+      "description": "Configuration settings for the application"
+    },
+    "config_debug.json": {
+      "type": "file",
+      "path": "config_debug.json",
+      "description": "Debug configuration with model file path"
+    },
+    "dockerfiles/Prod.Dockerfile": {
+      "type": "file",
+      "path": "dockerfiles/Prod.Dockerfile",
+      "description": "Production Dockerfile for model deployment"
+    },
+    "dockerfiles/Dev.Dockerfile": {
+      "type": "file",
+      "path": "dockerfiles/Dev.Dockerfile",
+      "description": "Development Dockerfile with debug dependencies"
+    },
+    "compose/docker-compose.yaml": {
+      "type": "file",
+      "path": "compose/docker-compose.yaml",
+      "description": "Production Docker Compose configuration"
+    },
+    "compose/docker-compose.debug.yaml": {
+      "type": "file",
+      "path": "compose/docker-compose.debug.yaml",
+      "description": "Debug Docker Compose configuration with development settings"
+    }
+  }
+}
